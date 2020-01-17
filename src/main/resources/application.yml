@@ -13,3 +13,17 @@ spring:
       ddl-auto: none
     # 打印执行的 sql 语句，方便排查问题
     show-sql: true
+
+  application:
+    # 指定注册到 consul 上的服务名称
+    # 分隔符务必用中划线，不能用下划线，不用分隔符也没问题
+    # 如果用了下划线：
+    # 1、会强制被转换成中划线
+    # 2、如果不是 consul，则会造成微服务之间无法正常调用，这是 ribbon 的问题，ribbon会把名称当作虚拟主机名
+    name: ms-user
+  cloud:
+    consul:
+      # 指定 consul 的主机名或ip
+      host: localhost
+      # 指定 consul 的端口
+      port: 8500
