@@ -27,3 +27,15 @@ spring:
       host: localhost
       # 指定 consul 的端口
       port: 8500
+      # 健康检查路径，默认就是 /actuator/health
+#      discovery:
+#        health-check-path: /actuator/health
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
