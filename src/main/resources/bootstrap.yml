@@ -11,7 +11,7 @@ spring:
       port: 8500
       config:
         # 配置格式为 yaml
-        format: files
+        format: yaml
   profiles:
     # 优先级 ms-user,dev -> ms-user -> application,dev -> application
     active: dev
