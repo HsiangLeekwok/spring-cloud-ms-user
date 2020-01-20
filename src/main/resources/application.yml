@@ -12,7 +12,7 @@ spring:
       # 让 hibernate不去操作表结构
       ddl-auto: none
     # 打印执行的 sql 语句，方便排查问题
-    show-sql: true
+    # show-sql: true
 
   application:
     # 指定注册到 consul 上的服务名称
@@ -43,6 +43,9 @@ spring:
         - 192.168
         - 10.0
       # 也可以指定忽略某些网卡的名字，剩下没有忽略的就是需要保留且注册到 consul 上的
+  profiles:
+    # 默认设置配置为 dev 方式
+    active: dev
 #      ignored-interfaces:
 #        - docker0
 #        - veth.*
@@ -56,3 +59,17 @@ management:
   endpoint:
     health:
       show-details: always
+
+# 通用配置
+---
+# 开发环境配置，运行 EditConfigurations - Active profiles - dev 即可启动开发环境
+spring:
+  profiles: dev
+  jpa:
+    show-sql: true
+---
+# 生产环境配置
+spring:
+  profiles: prod
+  jpa:
+    show-sql: false
