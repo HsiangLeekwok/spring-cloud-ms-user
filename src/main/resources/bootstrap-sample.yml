@@ -1,0 +1,33 @@
+spring:
+  application:
+    # 服务名称
+    name: service-name
+  cloud:
+    consul:
+      config:
+        # 启动 consul config，默认为 true
+        enabled: true
+        # 配置文件的前缀，默认 config
+        prefix: config
+        # 共享配置文件夹名，默认 application
+        default-context: application
+        # 应用名称与 profile 之间的分隔符，默认半角逗号 ,
+        profile-separator: ','
+        # data-key
+        data-key: data
+        # 配置文件格式，有 yaml/key-value/files/profiles 几种配置格式
+        format: yaml
+        watch:
+          # watch 的延时时间，默认 1000ms
+          delay: 1000
+          # 是否启动监听配置变化，默认 true
+          enabled: true
+          # watch 时间间隔，默认 55s
+          wait-time: 55
+      # consul 服务地址
+      host: localhost
+      # consul 服务端口
+      port: 8500
+  profiles:
+    # 当前使用的配置环境为 dev
+    active: dev

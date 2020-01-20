@@ -1,6 +1,7 @@
 package com.leekwok.msuser.controller;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * <b>Subject</b>: <br/>
  * <b>Description</b>:
  */
+@RefreshScope// 配置自动刷新
 @RestController
 public class TestController {
     // 如果不使用 consul 管理的话，这个配置属性会在 application.yml 里读取
