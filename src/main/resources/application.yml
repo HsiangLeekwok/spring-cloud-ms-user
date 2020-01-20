@@ -28,7 +28,24 @@ spring:
       # 指定 consul 的端口
       port: 8500
       # 健康检查路径，默认就是 /actuator/health
-#      discovery:
+      discovery:
+        # 设置 spring cloud 的元数据
+        # 控制微服务之间的调用
+        tags: JIFANG=NJ
+        # 注册 ip 到 consul 上
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}-${server.port}-${spring.cloud.client.hostname}
+        #instance-id: ${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}
+
+    inetutils:
+      # 指定可以注册到 consul 上的 ip 地址列表，多个网卡多个 ip 地址的时候适用
+      preferred-networks:
+        - 192.168
+        - 10.0
+      # 也可以指定忽略某些网卡的名字，剩下没有忽略的就是需要保留且注册到 consul 上的
+#      ignored-interfaces:
+#        - docker0
+#        - veth.*
 #        health-check-path: /actuator/health
 
 management:
