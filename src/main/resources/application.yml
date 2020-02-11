@@ -1,8 +1,11 @@
 server:
-  port: 8082
+  port: 8081
 spring:
+  rabbitmq:
+    host: 192.168.28.128
+    port: 5672
   datasource:
-    url: jdbc:mysql://localhost:3306/ms_user
+    url: jdbc:mysql://192.168.28.128:3306/ms_user
     hikari:
       username: root
       password: root1234%
@@ -22,9 +25,15 @@ spring:
     # 2、如果不是 consul，则会造成微服务之间无法正常调用，这是 ribbon 的问题，ribbon会把名称当作虚拟主机名
 #    name: ms-user
   cloud:
+    stream:
+      bindings:
+        input:
+          # topic
+          destination: stream-test
+
     consul:
       # 指定 consul 的主机名或 ip
-#      host: localhost
+#      host: 192.168.28.128
       # 指定 consul 的端口
 #      port: 8500
       # 健康检查路径，默认就是 /actuator/health
@@ -43,6 +52,7 @@ spring:
         - 192.168
         - 10.0
       # 也可以指定忽略某些网卡的名字，剩下没有忽略的就是需要保留且注册到 consul 上的
+
   profiles:
     # 默认设置配置为 dev 方式
     active: dev
@@ -61,8 +71,8 @@ management:
       show-details: always
 
 # 通用配置
-#first:
-#  config: test
+first:
+  config: test
 
 ---
 # 外部启动时 java -jar xxx.jar --spring.profiles.active=dev 即可启动
