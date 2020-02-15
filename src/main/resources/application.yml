@@ -30,6 +30,8 @@ spring:
         input:
           # topic
           destination: stream-test
+        myInput:
+          destination: stream-test2
 
     consul:
       # 指定 consul 的主机名或 ip
