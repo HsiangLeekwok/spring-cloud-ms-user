@@ -20,10 +20,18 @@ public class TestStreamListener {
 
     public static final Logger Logger = LoggerFactory.getLogger(TestStreamListener.class);
 
-    @StreamListener(Sink.INPUT)
-    public void test(String message) {
-        Logger.info("message is: {}", message);
-       // throw new RuntimeException("发生了一个消息消费异常");
+    /**
+     * condition 属性支持 SpEL 表达
+     * @param message
+     */
+    @StreamListener(value = Sink.INPUT, condition = "headers['version']=='v1'")
+    public void testV1(String message) {
+        Logger.info("消费 v1 版本的消息: {}", message);
+    }
+
+    @StreamListener(value = Sink.INPUT, condition = "headers['version']=='v2'")
+    public void testV2(String message) {
+        Logger.info("消费 v2 版本的消息: {}", message);
     }
 
     @StreamListener(MySink.MY_INPUT)
@@ -33,6 +41,7 @@ public class TestStreamListener {
 
     /**
      * 全局处理异常
+     *
      * @param message 原始的消息
      */
     @StreamListener("errorChannel")
