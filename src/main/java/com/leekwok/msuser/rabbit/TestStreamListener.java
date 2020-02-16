@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * <b>Subject</b>: <br/>
  * <b>Description</b>:
  */
-@Component
+// @Component
 public class TestStreamListener {
 
     public static final Logger Logger = LoggerFactory.getLogger(TestStreamListener.class);

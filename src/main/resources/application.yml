@@ -5,7 +5,7 @@ spring:
     host: 192.168.28.128
     port: 5672
   datasource:
-    url: jdbc:mysql://192.168.28.128:3306/ms_user
+    url: jdbc:mysql://192.168.28.128:3306/ms_user?characterEncoding=utf-8
     hikari:
       username: root
       password: root1234%
@@ -29,11 +29,11 @@ spring:
       bindings:
         input:
           # topic
-          destination: stream-test
+          destination: lesson-buy
           # 设置本 channel 下，相同 group 下同一条消息只会有一个实例去消费消息，且多个实例以轮训方式分次消费消息
           group: g1
-        myInput:
-          destination: stream-test2
+#        myInput:
+#          destination: stream-test2
 
     consul:
       # 指定 consul 的主机名或 ip
