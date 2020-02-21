@@ -1,8 +1,10 @@
 package com.leekwok.msuser.service;
 
+import com.leekwok.msuser.dto.UserLoginDTO;
 import com.leekwok.msuser.dto.UserMoneyDTO;
 import com.leekwok.msuser.entity.User;
 import com.leekwok.msuser.entity.UserAccountEventLog;
+import com.leekwok.msuser.jwt.JwtOperator;
 import com.leekwok.msuser.repository.UserAccountEventLogRepository;
 import com.leekwok.msuser.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Optional;
 
 /**
@@ -29,6 +32,9 @@ public class UserService {
 
     @Autowired
     private UserAccountEventLogRepository userAccountEventLogRepository;
+
+    @Autowired
+    private JwtOperator jwtOperator;
 
     /**
      * 根据 id 查找用户信息
@@ -59,5 +65,20 @@ public class UserService {
                         new Date()
                 )
         );
+    }
+
+    public String login(UserLoginDTO loginDTO) {
+        // 1. 校验账号密码(直接使用明文，MD5/SHA1等)是否匹配
+        // 让 spring data jpa 发送处理语句
+        return this.userRepository.findByUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword())
+                .map(user -> {
+                    // 2. 如果匹配，则颁发 token
+                    HashMap<String, Object> map = new HashMap<>();
+                    map.put("userId", user.getId());
+                    map.put("username", user.getUsername());
+
+                    return jwtOperator.generateToken(map);
+                })
+                .orElseThrow(() -> new IllegalArgumentException("账号密码不匹配"));
     }
 }
