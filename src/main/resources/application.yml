@@ -73,6 +73,11 @@ management:
   endpoint:
     health:
       show-details: always
+  jwt:
+    # 密钥
+    secret: aaabbbcccdddeeefffggghhhiiijjjkkklllmmmnnnooopppqqqrrrsssttt
+    # 有效期，单位秒，默认 2 周
+    expire-time-in-second: 1209600
 
 # 通用配置
 first:
