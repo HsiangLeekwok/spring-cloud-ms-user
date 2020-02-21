@@ -11,6 +11,12 @@ Content-Type: application/json
 
 GET http://localhost:8081/users/1
 Accept: application/json
-Authorization: ayJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoibGVla3dvayIsImlhdCI6MTU4MjI3MDEzMSwiZXhwIjoxNTgzNDc5NzMxfQ.5DPwJy_a_ph8pViVVQ1iGbuYXKBV0frDaD-gRD8o0yw
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoibGVla3dvayIsImlhdCI6MTU4MjI3MzY4NSwiZXhwIjoxNTgzNDgzMjg1fQ.A4n7sDjblmAKXiSpCGEVQEh55_cEND5I76KtlHTendE
+
+###
+
+GET http://localhost:8010/lessons/buy/1
+Accept: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoibGVla3dvayIsImlhdCI6MTU4MjI3MzY4NSwiZXhwIjoxNTgzNDgzMjg1fQ.A4n7sDjblmAKXiSpCGEVQEh55_cEND5I76KtlHTendE
 
 ###
