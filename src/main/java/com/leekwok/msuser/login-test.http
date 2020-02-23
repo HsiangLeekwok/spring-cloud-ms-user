@@ -19,4 +19,14 @@ GET http://localhost:8010/lessons/buy/1
 Accept: application/json
 Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoibGVla3dvayIsImlhdCI6MTU4MjI3MzY4NSwiZXhwIjoxNTgzNDgzMjg1fQ.A4n7sDjblmAKXiSpCGEVQEh55_cEND5I76KtlHTendE
 
+### 基于 RestTemplate 的 exchange 方式传递 token
+GET http://localhost:8010/test-token-relay
+Accept: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoibGVla3dvayIsImlhdCI6MTU4MjI3MzY4NSwiZXhwIjoxNTgzNDgzMjg1fQ.A4n7sDjblmAKXiSpCGEVQEh55_cEND5I76KtlHTendE
+
+### 基于 RestTemplate 的 RequestInterceptor 方式传递 token
+GET http://localhost:8010/test-token-relay2
+Accept: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoibGVla3dvayIsImlhdCI6MTU4MjI3MzY4NSwiZXhwIjoxNTgzNDgzMjg1fQ.A4n7sDjblmAKXiSpCGEVQEh55_cEND5I76KtlHTendE
+
 ###
