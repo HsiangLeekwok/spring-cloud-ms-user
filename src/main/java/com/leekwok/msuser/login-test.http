@@ -29,4 +29,14 @@ GET http://localhost:8010/test-token-relay2
 Accept: application/json
 Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoibGVla3dvayIsImlhdCI6MTU4MjI3MzY4NSwiZXhwIjoxNTgzNDgzMjg1fQ.A4n7sDjblmAKXiSpCGEVQEh55_cEND5I76KtlHTendE
 
+### 用户使用 user 角色访问，会出错
+GET http://localhost:8010/vip
+Accept: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoidXNlciIsInVzZXJJZCI6MSwidXNlcm5hbWUiOiJsZWVrd29rIiwiaWF0IjoxNTgyNDY5ODc0LCJleHAiOjE1ODM2Nzk0NzR9.sr88mQi4Q_kCF2gHrGYaJaie1pqS1IQSwswS8WnJHXs
+
+### 用户使用 vip 角色访问，会出错
+GET http://localhost:8010/vip
+Accept: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoidmlwIiwidXNlcklkIjoxLCJ1c2VybmFtZSI6ImxlZWt3b2siLCJpYXQiOjE1ODI0NzAwMDMsImV4cCI6MTU4MzY3OTYwM30.bxJaz3-tOXiVHWTpqqjBcCfUH4I7MLXcrszsLh1KzEc
+
 ###

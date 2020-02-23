@@ -76,6 +76,7 @@ public class UserService {
                     HashMap<String, Object> map = new HashMap<>();
                     map.put("userId", user.getId());
                     map.put("username", user.getUsername());
+                    map.put("role", "vip");
 
                     return jwtOperator.generateToken(map);
                 })
